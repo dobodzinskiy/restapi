@@ -2,14 +2,20 @@ package com.dataart.entity;
 
 import com.dataart.enums.HotelType;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "hotel")
@@ -35,6 +41,11 @@ public class Hotel {
 
     @Column(name = "hotel_tennis")
     private Boolean tennis;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "check_in", joinColumns = @JoinColumn(name = "hotel_id"))
+    @Column(name = "check_in_date")
+    private List<Date> dates;
 
     public int getId() {
         return id;
@@ -82,5 +93,13 @@ public class Hotel {
 
     public void setTennis(Boolean tennis) {
         this.tennis = tennis;
+    }
+
+    public List<Date> getDates() {
+        return dates;
+    }
+
+    public void setDates(List<Date> dates) {
+        this.dates = dates;
     }
 }

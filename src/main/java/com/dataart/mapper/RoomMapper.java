@@ -20,6 +20,7 @@ public class RoomMapper implements Mapper<Room, RoomDto> {
         room.setNumber(roomDto.getNumber());
         room.setRoomType(RoomType.getEnum(roomDto.getRoomType()));
         room.setRoomView(RoomView.getEnum(roomDto.getRoomView()));
+        room.setCost(roomDto.getCost());
         return room;
     }
 
@@ -32,9 +33,15 @@ public class RoomMapper implements Mapper<Room, RoomDto> {
         roomDto.setTv(room.getTv());
         roomDto.setBalcony(room.getBalcony());
         roomDto.setConditioner(room.getConditioner());
-        roomDto.setHotelName(room.getHotel().getName());
         roomDto.setRoomType(room.getRoomType().getValue());
         roomDto.setRoomView(room.getRoomView().getValue());
+        roomDto.setCost(room.getCost());
+        roomDto.setHotelName(room.getHotel().getName());
+        roomDto.setHotelType(room.getHotel().getHotelType().getValue());
+        roomDto.setPool(room.getHotel().getPool());
+        roomDto.setSlides(room.getHotel().getSlides());
+        roomDto.setTennis(room.getHotel().getTennis());
+        roomDto.setDates(room.getHotel().getDates());
 
         return roomDto;
     }

@@ -1,13 +1,17 @@
 package com.dataart.dto;
 
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
 public class RoomDto {
 
     private int id;
 
-    private String number;
+    private Boolean free;
 
-    private String HotelName;
+    private String number;
 
     private String roomType;
 
@@ -19,7 +23,19 @@ public class RoomDto {
 
     private String roomView;
 
-    private Boolean free;
+    private BigDecimal cost;
+
+    private String HotelName;
+
+    private String hotelType;
+
+    private Boolean pool;
+
+    private Boolean slides;
+
+    private Boolean tennis;
+
+    private List<Date> dates;
 
     public int getId() {
         return id;
@@ -29,20 +45,20 @@ public class RoomDto {
         this.id = id;
     }
 
+    public Boolean getFree() {
+        return free;
+    }
+
+    public void setFree(Boolean free) {
+        this.free = free;
+    }
+
     public String getNumber() {
         return number;
     }
 
     public void setNumber(String number) {
         this.number = number;
-    }
-
-    public String getHotelName() {
-        return HotelName;
-    }
-
-    public void setHotelName(String hotelName) {
-        HotelName = hotelName;
     }
 
     public String getRoomType() {
@@ -85,11 +101,59 @@ public class RoomDto {
         this.roomView = roomView;
     }
 
-    public Boolean getFree() {
-        return free;
+    public BigDecimal getCost() {
+        return cost;
     }
 
-    public void setFree(Boolean free) {
-        this.free = free;
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
+    }
+
+    public String getHotelName() {
+        return HotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        HotelName = hotelName;
+    }
+
+    public String getHotelType() {
+        return hotelType;
+    }
+
+    public void setHotelType(String hotelType) {
+        this.hotelType = hotelType;
+    }
+
+    public Boolean getPool() {
+        return pool;
+    }
+
+    public void setPool(Boolean pool) {
+        this.pool = pool;
+    }
+
+    public Boolean getSlides() {
+        return slides;
+    }
+
+    public void setSlides(Boolean slides) {
+        this.slides = slides;
+    }
+
+    public Boolean getTennis() {
+        return tennis;
+    }
+
+    public void setTennis(Boolean tennis) {
+        this.tennis = tennis;
+    }
+
+    public List<Date> getDates() {
+        return dates;
+    }
+
+    public void setDates(List<Date> dates) {
+        this.dates = dates;
     }
 }

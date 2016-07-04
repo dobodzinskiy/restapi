@@ -1,7 +1,7 @@
 package com.dataart.enums;
 
 public enum HotelType {
-    WEEKLY("Weekly"),
+    CHECK_IN("Check in"),
     DAILY("Daily");
 
     private String value;

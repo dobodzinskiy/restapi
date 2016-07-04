@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "room")
@@ -61,6 +62,9 @@ public class Room {
 
     @Column(name = "room_free")
     private Boolean free;
+
+    @Column(name = "room_cost")
+    private BigDecimal cost;
 
     public int getId() {
         return id;
@@ -132,5 +136,13 @@ public class Room {
 
     public void setFree(Boolean free) {
         this.free = free;
+    }
+
+    public BigDecimal getCost() {
+        return cost;
+    }
+
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
     }
 }
