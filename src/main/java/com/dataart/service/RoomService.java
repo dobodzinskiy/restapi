@@ -12,9 +12,13 @@ public interface RoomService {
 
     List<RoomDto> findRooms(RoomRequestDto roomRequestDto);
 
+    List<RoomDto> findRooms();
+
     OrderDto order(OrderDto orderDto);
 
     Client createClient(String name, String lastName, String phone);
 
     Room lockRoom(int id);
+
+    RoomDto findRoom(int id);
 }

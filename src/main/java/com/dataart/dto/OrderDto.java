@@ -1,25 +1,38 @@
 package com.dataart.dto;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
+
 public class OrderDto {
 
     private int id;
 
+    @NotEmpty
     private String hotelName;
 
+    @NotNull
     private int hotelId;
 
+    @NotNull
     private String number;
 
+    @NotNull
     private int roomId;
 
+    @NotEmpty
     private String clientName;
 
+    @NotEmpty
     private String clientLastName;
 
+    @NotEmpty
     private String clientPhone;
 
+    @NotEmpty
     private String start;
 
+    @NotEmpty
     private String end;
 
     public int getId() {

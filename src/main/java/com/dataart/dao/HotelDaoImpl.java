@@ -46,6 +46,19 @@ public class HotelDaoImpl implements HotelDao {
     }
 
     @Override
+    public List<Room> findRooms() {
+        TypedQuery<Room> roomTypedQuery = entityManager.createNamedQuery("Room.FindAllRooms", Room.class);
+        List<Room> rooms;
+        try {
+            rooms = roomTypedQuery.getResultList();
+        } catch (NoResultException ex) {
+            LOGGER.warn("Applications weren't found", ex);
+            return Collections.emptyList();
+        }
+        return rooms;
+    }
+
+    @Override
     public Room findRoom(int id) {
         return entityManager.find(Room.class, id);
     }

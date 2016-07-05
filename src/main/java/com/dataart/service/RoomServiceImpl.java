@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,20 @@ public class RoomServiceImpl implements RoomService {
     @Override
     @Transactional(readOnly = true)
     public List<RoomDto> findRooms(RoomRequestDto roomRequestDto) {
-        return hotelDao.findRooms(roomRequestDto).stream().map(room -> roomMapper.toDto(room)).collect(Collectors.toList());
+        List<Room> rooms = hotelDao.findRooms(roomRequestDto);
+        if (rooms.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return rooms.stream().map(room -> roomMapper.toDto(room)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RoomDto> findRooms() {
+        List<Room> rooms = hotelDao.findRooms();
+        if (rooms.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return rooms.stream().map(room -> roomMapper.toDto(room)).collect(Collectors.toList());
     }
 
     @Override
@@ -65,5 +79,10 @@ public class RoomServiceImpl implements RoomService {
         order.setRoom(this.lockRoom(orderDto.getRoomId()));
         hotelDao.saveOrder(order);
         return orderMapper.toDto(order);
+    }
+
+    @Override
+    public RoomDto findRoom(int id) {
+        return roomMapper.toDto(hotelDao.findRoom(id));
     }
 }

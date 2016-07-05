@@ -19,6 +19,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "room")
 @NamedQueries({
+        @NamedQuery(name = "Room.FindAllRooms", query = "select r from Room r"),
         @NamedQuery(name = "Room.FindRooms",
                 query = "select r from Room r where r.free = true and " +
                         "r.hotel.hotelType = :hotelType and " +
@@ -58,6 +59,7 @@ public class Room {
     private Boolean conditioner;
 
     @Column(name = "room_view")
+    @Enumerated(EnumType.STRING)
     private RoomView roomView;
 
     @Column(name = "room_free")

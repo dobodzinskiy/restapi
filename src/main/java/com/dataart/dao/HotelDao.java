@@ -13,6 +13,8 @@ public interface HotelDao {
 
     List<Room> findRooms(RoomRequestDto roomRequestDto);
 
+    List<Room> findRooms();
+
     Room findRoom(int id);
 
     Hotel findHotel(int id);
