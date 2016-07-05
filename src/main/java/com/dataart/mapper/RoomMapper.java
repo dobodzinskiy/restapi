@@ -6,7 +6,7 @@ import com.dataart.enums.RoomType;
 import com.dataart.enums.RoomView;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("roomMapper")
 public class RoomMapper implements Mapper<Room, RoomDto> {
 
     @Override

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-@Component
+@Component("orderMapper")
 public class OrderMapper implements Mapper<Order, OrderDto> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderMapper.class);

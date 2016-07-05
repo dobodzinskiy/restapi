@@ -17,74 +17,39 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class HotelDaoImpl implements HotelDao {
+public class HotelDaoImpl implements Dao<Hotel> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HotelDaoImpl.class);
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public List<Room> findRooms(RoomRequestDto roomRequestDto) {
-        TypedQuery<Room> roomTypedQuery = entityManager.createNamedQuery("Room.FindRooms", Room.class);
-        List<Room> rooms;
-        roomTypedQuery.setParameter("hotelType", roomRequestDto.getHotelType());
-        roomTypedQuery.setParameter("roomView", roomRequestDto.getRoomView());
-        roomTypedQuery.setParameter("roomView", roomRequestDto.getRoomView());
-        roomTypedQuery.setParameter("tv", roomRequestDto.getTv());
-        roomTypedQuery.setParameter("balcony", roomRequestDto.getBalcony());
-        roomTypedQuery.setParameter("conditioner", roomRequestDto.getConditioner());
-        roomTypedQuery.setParameter("pool", roomRequestDto.getPool());
-        roomTypedQuery.setParameter("slides", roomRequestDto.getSlides());
-        roomTypedQuery.setParameter("tennis", roomRequestDto.getTennis());
+    public List<Hotel> findAll() {
+        TypedQuery<Hotel> typedQuery = entityManager.createNamedQuery("Hotel.findHotels", Hotel.class);
+        List<Hotel> hotels;
         try {
-            rooms = roomTypedQuery.getResultList();
+            hotels = typedQuery.getResultList();
         } catch (NoResultException ex) {
-            LOGGER.warn("Applications weren't found", ex);
+            LOGGER.warn("Hotels weren't found", ex);
             return Collections.emptyList();
         }
-        return rooms;
+        return hotels;
     }
 
     @Override
-    public List<Room> findRooms() {
-        TypedQuery<Room> roomTypedQuery = entityManager.createNamedQuery("Room.FindAllRooms", Room.class);
-        List<Room> rooms;
-        try {
-            rooms = roomTypedQuery.getResultList();
-        } catch (NoResultException ex) {
-            LOGGER.warn("Applications weren't found", ex);
-            return Collections.emptyList();
-        }
-        return rooms;
-    }
-
-    @Override
-    public Room findRoom(int id) {
-        return entityManager.find(Room.class, id);
-    }
-
-    @Override
-    public Hotel findHotel(int id) {
+    public Hotel find(int id) {
         return entityManager.find(Hotel.class, id);
     }
 
     @Override
-    public Order findOrder(int id) {
-        return entityManager.find(Order.class, id);
+    public Hotel create(Hotel hotel) {
+        entityManager.persist(hotel);
+        return hotel;
     }
 
     @Override
-    public void saveClient(Client client) {
-        entityManager.persist(client);
-    }
-
-    @Override
-    public void saveOrder(Order order) {
-        entityManager.persist(order);
-    }
-
-    @Override
-    public void updateRoom(Room room) {
-        entityManager.merge(room);
+    public Hotel update(Hotel hotel) {
+        entityManager.merge(hotel);
+        return hotel;
     }
 }

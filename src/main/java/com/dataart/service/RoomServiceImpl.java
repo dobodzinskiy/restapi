@@ -1,6 +1,7 @@
 package com.dataart.service;
 
-import com.dataart.dao.HotelDao;
+import com.dataart.dao.ClientDaoImpl;
+import com.dataart.dao.RoomDaoImpl;
 import com.dataart.dto.OrderDto;
 import com.dataart.dto.RoomDto;
 import com.dataart.dto.RoomRequestDto;
@@ -22,18 +23,15 @@ import java.util.stream.Collectors;
 public class RoomServiceImpl implements RoomService {
 
     @Autowired
-    private HotelDao hotelDao;
+    private RoomDaoImpl roomDao;
 
     @Autowired
     private RoomMapper roomMapper;
 
-    @Autowired
-    private OrderMapper orderMapper;
-
     @Override
     @Transactional(readOnly = true)
     public List<RoomDto> findRooms(RoomRequestDto roomRequestDto) {
-        List<Room> rooms = hotelDao.findRooms(roomRequestDto);
+        List<Room> rooms = roomDao.findFilteredRooms(roomRequestDto);
         if (rooms.isEmpty()) {
             return Collections.emptyList();
         }
@@ -42,7 +40,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<RoomDto> findRooms() {
-        List<Room> rooms = hotelDao.findRooms();
+        List<Room> rooms = roomDao.findAll();
         if (rooms.isEmpty()) {
             return Collections.emptyList();
         }
@@ -50,39 +48,20 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Client createClient(String name, String lastName, String phone) {
-        Client client = new Client();
-        client.setName(name);
-        client.setLastName(lastName);
-        client.setPhone(phone);
-        hotelDao.saveClient(client);
-
-        return client;
-    }
-
-    @Override
     public Room lockRoom(int id) {
-        Room room = hotelDao.findRoom(id);
+        Room room = roomDao.find(id);
         room.setFree(false);
-        hotelDao.updateRoom(room);
+        roomDao.update(room);
         return room;
     }
 
     @Override
-    public OrderDto order(OrderDto orderDto) {
-        Order order = orderMapper.fromDto(orderDto);
-        order.setClient(this.createClient(
-                orderDto.getClientName(),
-                orderDto.getClientLastName(),
-                orderDto.getClientPhone()));
-        order.setHotel(hotelDao.findHotel(orderDto.getHotelId()));
-        order.setRoom(this.lockRoom(orderDto.getRoomId()));
-        hotelDao.saveOrder(order);
-        return orderMapper.toDto(order);
+    public RoomDto findRoom(int id) {
+        return roomMapper.toDto(roomDao.find(id));
     }
 
     @Override
-    public RoomDto findRoom(int id) {
-        return roomMapper.toDto(hotelDao.findRoom(id));
+    public RoomDto createRoom(RoomDto roomDto) {
+        return roomMapper.toDto(roomDao.create(roomMapper.fromDto(roomDto)));
     }
 }

@@ -1,9 +1,7 @@
 package com.dataart.service;
 
-import com.dataart.dto.OrderDto;
 import com.dataart.dto.RoomDto;
 import com.dataart.dto.RoomRequestDto;
-import com.dataart.entity.Client;
 import com.dataart.entity.Room;
 
 import java.util.List;
@@ -14,11 +12,9 @@ public interface RoomService {
 
     List<RoomDto> findRooms();
 
-    OrderDto order(OrderDto orderDto);
-
-    Client createClient(String name, String lastName, String phone);
-
     Room lockRoom(int id);
 
     RoomDto findRoom(int id);
+
+    RoomDto createRoom(RoomDto roomDto);
 }
