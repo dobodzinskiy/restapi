@@ -20,6 +20,21 @@ public class RoomRequestDto {
 
     private Boolean tennis;
 
+    public RoomRequestDto(String hotelType, String roomType, String roomView, Boolean tv, Boolean conditioner,
+                          Boolean balcony, Boolean pool, Boolean slides, Boolean tennis) {
+        this.hotelType = hotelType;
+        this.roomType = roomType;
+        this.roomView = roomView;
+        this.tv = tv;
+        this.conditioner = conditioner;
+        this.balcony = balcony;
+        this.pool = pool;
+        this.slides = slides;
+        this.tennis = tennis;
+    }
+
+    public RoomRequestDto() {}
+
     public String getHotelType() {
         return hotelType;
     }

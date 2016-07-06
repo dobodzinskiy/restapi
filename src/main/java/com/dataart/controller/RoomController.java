@@ -19,8 +19,19 @@ public class RoomController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public List<RoomDto> findRooms() {
-        return roomService.findRooms();
+    public List<RoomDto> findRooms(
+            @RequestParam(required = false, defaultValue = "any", value = "hType") String hotelType,
+            @RequestParam(required = false, defaultValue = "any", value = "rType") String roomType,
+            @RequestParam(required = false, defaultValue = "any", value = "rView") String roomView,
+            @RequestParam(required = false, defaultValue = "any", value = "tv") Boolean tv,
+            @RequestParam(required = false, defaultValue = "any", value = "c") Boolean conditioner,
+            @RequestParam(required = false, defaultValue = "any", value = "b") Boolean balcony,
+            @RequestParam(required = false, defaultValue = "any", value = "p") Boolean pool,
+            @RequestParam(required = false, defaultValue = "any", value = "s") Boolean slides,
+            @RequestParam(required = false, defaultValue = "any", value = "t") Boolean tennis) {
+        RoomRequestDto roomRequestDto =
+                new RoomRequestDto(hotelType, roomType, roomView, tv, conditioner, balcony, pool, slides, tennis);
+        return roomService.findRooms(roomRequestDto);
     }
 
     @RequestMapping(method = RequestMethod.POST)
