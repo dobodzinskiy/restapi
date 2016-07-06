@@ -1,5 +1,5 @@
 {
-  "name": "appstore",
+  "name": "restapi",
   "version": "0.0.1",
   "description": "Java, Maven, Spring, JPA, Hibernate, RESTful API, JavaScript, AJAX, ReactJs, Redux, Jquery, Bootstrap",
   "main": "index.js",
