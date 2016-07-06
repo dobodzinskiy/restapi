@@ -8,7 +8,7 @@ public interface Dao<T> {
 
     T find(int id);
 
-    T create(T t);
+    void create(T t);
 
-    T update(T t);
+    void update(T t);
 }

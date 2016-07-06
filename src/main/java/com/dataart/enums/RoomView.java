@@ -1,6 +1,7 @@
 package com.dataart.enums;
 
 public enum RoomView {
+    ANY("Any"),
     GARBAGE("Garbage"),
     POOL("Pool"),
     SEA("Sea");

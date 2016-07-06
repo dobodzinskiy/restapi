@@ -1,10 +1,6 @@
 package com.dataart.dao;
 
-import com.dataart.dto.RoomRequestDto;
-import com.dataart.entity.Client;
 import com.dataart.entity.Hotel;
-import com.dataart.entity.Order;
-import com.dataart.entity.Room;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -42,14 +38,12 @@ public class HotelDaoImpl implements Dao<Hotel> {
     }
 
     @Override
-    public Hotel create(Hotel hotel) {
+    public void create(Hotel hotel) {
         entityManager.persist(hotel);
-        return hotel;
     }
 
     @Override
-    public Hotel update(Hotel hotel) {
+    public void update(Hotel hotel) {
         entityManager.merge(hotel);
-        return hotel;
     }
 }

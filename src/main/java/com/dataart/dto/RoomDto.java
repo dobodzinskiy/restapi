@@ -26,6 +26,8 @@ public class RoomDto {
 
     private String HotelName;
 
+    private int hotelId;
+
     private String hotelType;
 
     private Boolean pool;
@@ -114,6 +116,14 @@ public class RoomDto {
 
     public void setHotelName(String hotelName) {
         HotelName = hotelName;
+    }
+
+    public int getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(int hotelId) {
+        this.hotelId = hotelId;
     }
 
     public String getHotelType() {

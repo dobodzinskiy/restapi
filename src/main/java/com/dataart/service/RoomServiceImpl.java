@@ -1,5 +1,6 @@
 package com.dataart.service;
 
+import com.dataart.dao.HotelDaoImpl;
 import com.dataart.dao.RoomDaoImpl;
 import com.dataart.dto.RoomDto;
 import com.dataart.dto.RoomRequestDto;
@@ -19,6 +20,9 @@ public class RoomServiceImpl implements RoomService {
 
     @Autowired
     private RoomDaoImpl roomDao;
+
+    @Autowired
+    private HotelDaoImpl hotelDao;
 
     @Autowired
     private RoomMapper roomMapper;
@@ -59,6 +63,9 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public RoomDto createRoom(RoomDto roomDto) {
-        return roomMapper.toDto(roomDao.create(roomMapper.fromDto(roomDto)));
+        Room room = roomMapper.fromDto(roomDto);
+        room.setHotel(hotelDao.find(roomDto.getHotelId()));
+        roomDao.create(room);
+        return roomMapper.toDto(room);
     }
 }

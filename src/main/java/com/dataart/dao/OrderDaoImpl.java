@@ -39,14 +39,12 @@ public class OrderDaoImpl implements Dao<Order> {
     }
 
     @Override
-    public Order create(Order order) {
+    public void create(Order order) {
         entityManager.persist(order);
-        return order;
     }
 
     @Override
-    public Order update(Order order) {
+    public void update(Order order) {
         entityManager.merge(order);
-        return order;
     }
 }

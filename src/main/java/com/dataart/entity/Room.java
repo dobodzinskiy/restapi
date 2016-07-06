@@ -22,15 +22,7 @@ import java.math.BigDecimal;
         @NamedQuery(name = "Room.FindAllRooms", query = "select r from Room r"),
         @NamedQuery(name = "Room.FindRooms",
                 query = "select r from Room r where r.free = true and " +
-                        "r.hotel.hotelType = :hotelType and " +
-                        "r.roomType = :roomType and " +
-                        "r.roomView = :roomView and " +
-                        "r.tv = :tv and " +
-                        "r.balcony = :balcony and " +
-                        "r.conditioner = :conditioner and " +
-                        "r.hotel.pool = :pool and " +
-                        "r.hotel.slides = :slides and " +
-                        "r.hotel.tennis = :tennis")
+                        "r.hotel.hotelType = :hotelType")
 })
 public class Room {
 

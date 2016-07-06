@@ -39,14 +39,12 @@ public class ClientDaoImpl implements Dao<Client> {
     }
 
     @Override
-    public Client create(Client client) {
+    public void create(Client client) {
         entityManager.persist(client);
-        return client;
     }
 
     @Override
-    public Client update(Client client) {
+    public void update(Client client) {
         entityManager.merge(client);
-        return client;
     }
 }

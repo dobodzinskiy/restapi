@@ -43,6 +43,7 @@ public class RoomMapper implements Mapper<Room, RoomDto> {
         roomDto.setRoomView(room.getRoomView().getValue());
         roomDto.setCost(room.getCost());
         roomDto.setHotelName(room.getHotel().getName());
+        roomDto.setHotelId(room.getHotel().getId());
         roomDto.setHotelType(room.getHotel().getHotelType().getValue());
         roomDto.setPool(room.getHotel().getPool());
         roomDto.setSlides(room.getHotel().getSlides());

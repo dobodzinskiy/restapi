@@ -1,6 +1,7 @@
 package com.dataart.enums;
 
 public enum HotelType {
+    ANY("Any"),
     CHECK_IN("Check in"),
     DAILY("Daily");
 

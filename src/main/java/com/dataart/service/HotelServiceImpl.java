@@ -2,6 +2,7 @@ package com.dataart.service;
 
 import com.dataart.dao.HotelDaoImpl;
 import com.dataart.dto.HotelDto;
+import com.dataart.entity.Hotel;
 import com.dataart.mapper.HotelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,8 @@ public class HotelServiceImpl implements HotelService{
 
     @Override
     public HotelDto createHotel(HotelDto hotelDto) {
-        return hotelMapper.toDto(hotelDao.create(hotelMapper.fromDto(hotelDto)));
+        Hotel hotel = hotelMapper.fromDto(hotelDto);
+        hotelDao.create(hotelMapper.fromDto(hotelDto));
+        return hotelMapper.toDto(hotel);
     }
 }

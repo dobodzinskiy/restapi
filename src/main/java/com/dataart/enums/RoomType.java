@@ -1,6 +1,7 @@
 package com.dataart.enums;
 
 public enum RoomType {
+    ANY("Any"),
     SINGLE("Single"),
     DOUBLE("Double"),
     TWIN("Twin");

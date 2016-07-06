@@ -1,27 +1,31 @@
 package com.dataart.dto;
 
+import com.dataart.enums.HotelType;
+import com.dataart.enums.RoomType;
+import com.dataart.enums.RoomView;
+
 public class RoomRequestDto {
 
-    private String hotelType;
+    private HotelType hotelType;
 
-    private String roomType;
+    private RoomType roomType;
 
-    private String roomView;
+    private RoomView roomView;
 
-    private Boolean tv;
+    private String tv;
 
-    private Boolean conditioner;
+    private String conditioner;
 
-    private Boolean balcony;
+    private String balcony;
 
-    private Boolean pool;
+    private String pool;
 
-    private Boolean slides;
+    private String slides;
 
-    private Boolean tennis;
+    private String tennis;
 
-    public RoomRequestDto(String hotelType, String roomType, String roomView, Boolean tv, Boolean conditioner,
-                          Boolean balcony, Boolean pool, Boolean slides, Boolean tennis) {
+    public RoomRequestDto(HotelType hotelType, RoomType roomType, RoomView roomView, String tv, String conditioner,
+                          String balcony, String pool, String slides, String tennis) {
         this.hotelType = hotelType;
         this.roomType = roomType;
         this.roomView = roomView;
@@ -33,77 +37,75 @@ public class RoomRequestDto {
         this.tennis = tennis;
     }
 
-    public RoomRequestDto() {}
-
-    public String getHotelType() {
+    public HotelType getHotelType() {
         return hotelType;
     }
 
-    public void setHotelType(String hotelType) {
+    public void setHotelType(HotelType hotelType) {
         this.hotelType = hotelType;
     }
 
-    public String getRoomType() {
+    public RoomType getRoomType() {
         return roomType;
     }
 
-    public void setRoomType(String roomType) {
+    public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
     }
 
-    public String getRoomView() {
+    public RoomView getRoomView() {
         return roomView;
     }
 
-    public void setRoomView(String roomView) {
+    public void setRoomView(RoomView roomView) {
         this.roomView = roomView;
     }
 
-    public Boolean getTv() {
+    public String getTv() {
         return tv;
     }
 
-    public void setTv(Boolean tv) {
+    public void setTv(String tv) {
         this.tv = tv;
     }
 
-    public Boolean getConditioner() {
+    public String getConditioner() {
         return conditioner;
     }
 
-    public void setConditioner(Boolean conditioner) {
+    public void setConditioner(String conditioner) {
         this.conditioner = conditioner;
     }
 
-    public Boolean getBalcony() {
+    public String getBalcony() {
         return balcony;
     }
 
-    public void setBalcony(Boolean balcony) {
+    public void setBalcony(String balcony) {
         this.balcony = balcony;
     }
 
-    public Boolean getPool() {
+    public String getPool() {
         return pool;
     }
 
-    public void setPool(Boolean pool) {
+    public void setPool(String pool) {
         this.pool = pool;
     }
 
-    public Boolean getSlides() {
+    public String getSlides() {
         return slides;
     }
 
-    public void setSlides(Boolean slides) {
+    public void setSlides(String slides) {
         this.slides = slides;
     }
 
-    public Boolean getTennis() {
+    public String getTennis() {
         return tennis;
     }
 
-    public void setTennis(Boolean tennis) {
+    public void setTennis(String tennis) {
         this.tennis = tennis;
     }
 }
