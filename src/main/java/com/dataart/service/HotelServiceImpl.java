@@ -4,12 +4,14 @@ import com.dataart.dao.HotelDaoImpl;
 import com.dataart.dto.HotelDto;
 import com.dataart.mapper.HotelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Service
+@Transactional
 public class HotelServiceImpl implements HotelService{
 
     @Autowired
@@ -19,11 +21,13 @@ public class HotelServiceImpl implements HotelService{
     private HotelMapper hotelMapper;
 
     @Override
+    @Transactional(readOnly = true)
     public List<HotelDto> findHotels() {
         return hotelDao.findAll().stream().map(hotelMapper::toDto).collect(Collectors.toList());
     }
 
     @Override
+    @Transactional(readOnly = true)
     public HotelDto findHotel(int id) {
         return hotelMapper.toDto(hotelDao.find(id));
     }

@@ -6,12 +6,16 @@ import com.dataart.enums.RoomType;
 import com.dataart.enums.RoomView;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
+import java.util.stream.Collectors;
+
 @Component("roomMapper")
 public class RoomMapper implements Mapper<Room, RoomDto> {
 
     @Override
     public Room fromDto(RoomDto roomDto) {
         Room room = new Room();
+
         room.setId(roomDto.getId());
         room.setBalcony(roomDto.getBalcony());
         room.setConditioner(roomDto.getConditioner());
@@ -27,6 +31,8 @@ public class RoomMapper implements Mapper<Room, RoomDto> {
     @Override
     public RoomDto toDto(Room room) {
         RoomDto roomDto = new RoomDto();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
         roomDto.setId(room.getId());
         roomDto.setNumber(room.getNumber());
         roomDto.setFree(room.getFree());
@@ -41,7 +47,7 @@ public class RoomMapper implements Mapper<Room, RoomDto> {
         roomDto.setPool(room.getHotel().getPool());
         roomDto.setSlides(room.getHotel().getSlides());
         roomDto.setTennis(room.getHotel().getTennis());
-        roomDto.setDates(room.getHotel().getDates());
+        roomDto.setDates(room.getHotel().getDates().stream().map(formatter::format).collect(Collectors.toList()));
 
         return roomDto;
     }

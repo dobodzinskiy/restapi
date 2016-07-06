@@ -2,7 +2,6 @@ package com.dataart.dto;
 
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 public class RoomDto {
@@ -35,7 +34,7 @@ public class RoomDto {
 
     private Boolean tennis;
 
-    private List<Date> dates;
+    private List<String> dates;
 
     public int getId() {
         return id;
@@ -149,11 +148,11 @@ public class RoomDto {
         this.tennis = tennis;
     }
 
-    public List<Date> getDates() {
+    public List<String> getDates() {
         return dates;
     }
 
-    public void setDates(List<Date> dates) {
+    public void setDates(List<String> dates) {
         this.dates = dates;
     }
 }
