@@ -1,3 +1,8 @@
-/**
- * Created by dobodzinskiy on 06.07.2016.
- */
+import * as types from '../actions/actionTypes';
+
+const initialState = {
+    rooms: [],
+    room: [],
+    order: [],
+};
+
