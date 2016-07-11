@@ -14,11 +14,11 @@ public class RoomDto {
 
     private String roomType;
 
-    private Boolean tv;
+    private String tv;
 
-    private Boolean balcony;
+    private String balcony;
 
-    private Boolean conditioner;
+    private String conditioner;
 
     private String roomView;
 
@@ -30,11 +30,11 @@ public class RoomDto {
 
     private String hotelType;
 
-    private Boolean pool;
+    private String pool;
 
-    private Boolean slides;
+    private String slides;
 
-    private Boolean tennis;
+    private String tennis;
 
     private List<String> dates;
 
@@ -70,28 +70,40 @@ public class RoomDto {
         this.roomType = roomType;
     }
 
-    public Boolean getTv() {
+    public String getTv() {
         return tv;
     }
 
-    public void setTv(Boolean tv) {
+    public void setTv(String tv) {
         this.tv = tv;
     }
 
-    public Boolean getBalcony() {
+    public String getBalcony() {
         return balcony;
     }
 
-    public void setBalcony(Boolean balcony) {
+    public void setBalcony(String balcony) {
         this.balcony = balcony;
     }
 
-    public Boolean getConditioner() {
+    public String getConditioner() {
         return conditioner;
     }
 
-    public void setConditioner(Boolean conditioner) {
+    public void setConditioner(String conditioner) {
         this.conditioner = conditioner;
+    }
+
+    public void setPool(String pool) {
+        this.pool = pool;
+    }
+
+    public void setSlides(String slides) {
+        this.slides = slides;
+    }
+
+    public void setTennis(String tennis) {
+        this.tennis = tennis;
     }
 
     public String getRoomView() {
@@ -134,28 +146,16 @@ public class RoomDto {
         this.hotelType = hotelType;
     }
 
-    public Boolean getPool() {
+    public String getPool() {
         return pool;
     }
 
-    public void setPool(Boolean pool) {
-        this.pool = pool;
-    }
-
-    public Boolean getSlides() {
+    public String getSlides() {
         return slides;
     }
 
-    public void setSlides(Boolean slides) {
-        this.slides = slides;
-    }
-
-    public Boolean getTennis() {
+    public String getTennis() {
         return tennis;
-    }
-
-    public void setTennis(Boolean tennis) {
-        this.tennis = tennis;
     }
 
     public List<String> getDates() {

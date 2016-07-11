@@ -26,13 +26,13 @@ public class Hotel {
     private HotelType hotelType;
 
     @Column(name = "hotel_pool")
-    private Boolean pool;
+    private String pool;
 
     @Column(name = "hotel_slides")
-    private Boolean slides;
+    private String slides;
 
     @Column(name = "hotel_tennis")
-    private Boolean tennis;
+    private String tennis;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "check_in", joinColumns = @JoinColumn(name = "hotel_id"))
@@ -63,27 +63,27 @@ public class Hotel {
         this.hotelType = hotelType;
     }
 
-    public Boolean getPool() {
+    public String getPool() {
         return pool;
     }
 
-    public void setPool(Boolean pool) {
+    public void setPool(String pool) {
         this.pool = pool;
     }
 
-    public Boolean getSlides() {
+    public String getSlides() {
         return slides;
     }
 
-    public void setSlides(Boolean slides) {
+    public void setSlides(String slides) {
         this.slides = slides;
     }
 
-    public Boolean getTennis() {
+    public String getTennis() {
         return tennis;
     }
 
-    public void setTennis(Boolean tennis) {
+    public void setTennis(String tennis) {
         this.tennis = tennis;
     }
 

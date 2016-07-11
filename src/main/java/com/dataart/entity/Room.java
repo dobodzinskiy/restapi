@@ -42,13 +42,13 @@ public class Room {
     private String number;
 
     @Column(name = "room_tv")
-    private Boolean tv;
+    private String tv;
 
     @Column(name = "room_balcony")
-    private Boolean balcony;
+    private String balcony;
 
     @Column(name = "room_conditioner")
-    private Boolean conditioner;
+    private String conditioner;
 
     @Column(name = "room_view")
     @Enumerated(EnumType.STRING)
@@ -92,27 +92,27 @@ public class Room {
         this.number = number;
     }
 
-    public Boolean getTv() {
+    public String getTv() {
         return tv;
     }
 
-    public void setTv(Boolean tv) {
+    public void setTv(String tv) {
         this.tv = tv;
     }
 
-    public Boolean getBalcony() {
+    public String getBalcony() {
         return balcony;
     }
 
-    public void setBalcony(Boolean balcony) {
+    public void setBalcony(String balcony) {
         this.balcony = balcony;
     }
 
-    public Boolean getConditioner() {
+    public String getConditioner() {
         return conditioner;
     }
 
-    public void setConditioner(Boolean conditioner) {
+    public void setConditioner(String conditioner) {
         this.conditioner = conditioner;
     }
 

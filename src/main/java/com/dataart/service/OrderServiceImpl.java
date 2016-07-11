@@ -1,8 +1,10 @@
 package com.dataart.service;
 
+import com.dataart.dao.ClientDaoImpl;
 import com.dataart.dao.HotelDaoImpl;
 import com.dataart.dao.OrderDaoImpl;
 import com.dataart.dto.OrderDto;
+import com.dataart.entity.Client;
 import com.dataart.entity.Order;
 import com.dataart.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class OrderServiceImpl  implements OrderService {
     private HotelDaoImpl hotelDao;
 
     @Autowired
+    private ClientDaoImpl clientDao;
+
+    @Autowired
     private RoomService roomService;
 
     @Autowired
@@ -31,10 +36,18 @@ public class OrderServiceImpl  implements OrderService {
     @Override
     public OrderDto order(OrderDto orderDto) {
         Order order = orderMapper.fromDto(orderDto);
-        order.setClient(clientService.create(
-                orderDto.getClientName(),
-                orderDto.getClientLastName(),
-                orderDto.getClientPhone()));
+//        order.setClient(clientService.create(
+//                orderDto.getClientName(),
+//                orderDto.getClientLastName(),
+//                orderDto.getClientPhone()));
+
+        Client client = new Client();
+        client.setName(orderDto.getClientName());
+        client.setLastName(orderDto.getClientLastName());
+        client.setPhone(orderDto.getClientPhone());
+        clientDao.create(client);
+        order.setClient(client);
+
         order.setHotel(hotelDao.find(orderDto.getHotelId()));
         order.setRoom(roomService.lockRoom(orderDto.getRoomId()));
         orderDao.create(order);

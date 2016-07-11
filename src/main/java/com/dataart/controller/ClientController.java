@@ -1,7 +1,7 @@
 package com.dataart.controller;
 
-import com.dataart.dto.OrderDto;
-import com.dataart.service.OrderService;
+import com.dataart.dto.ClientDto;
+import com.dataart.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/rest/v1.0/orders")
-public class OrderController {
+@RequestMapping("/rest/v1.0/clients")
+public class ClientController {
 
     @Autowired
-    private OrderService orderService;
+    private ClientService clientService;
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public OrderDto postOrder(@RequestBody @Valid OrderDto orderDto) {
-        return orderService.order(orderDto);
+    public ClientDto createClient(@RequestBody @Valid ClientDto clientDto) {
+        return clientService.create(clientDto);
     }
 }

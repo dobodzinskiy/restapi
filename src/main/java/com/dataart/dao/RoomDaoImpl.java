@@ -53,24 +53,6 @@ public class RoomDaoImpl implements Dao<Room> {
     }
 
     public List<Room> findFilteredRooms(RoomRequestDto roomRequestDto) {
-//        TypedQuery<Room> roomTypedQuery = entityManager.createNamedQuery("Room.FindRooms", Room.class);
-//        List<Room> rooms;
-//        roomTypedQuery.setParameter("hotelType", "%" + roomRequestDto.getHotelType() + "%");
-//        roomTypedQuery.setParameter("roomView", roomRequestDto.getRoomView());
-//        roomTypedQuery.setParameter("roomView", roomRequestDto.getRoomView());
-//        roomTypedQuery.setParameter("tv", roomRequestDto.getTv());
-//        roomTypedQuery.setParameter("balcony", roomRequestDto.getBalcony());
-//        roomTypedQuery.setParameter("conditioner", roomRequestDto.getConditioner());
-//        roomTypedQuery.setParameter("pool", roomRequestDto.getPool());
-//        roomTypedQuery.setParameter("slides", roomRequestDto.getSlides());
-//        roomTypedQuery.setParameter("tennis", roomRequestDto.getTennis());
-//        try {
-//            rooms = roomTypedQuery.getResultList();
-//        } catch (NoResultException ex) {
-//            LOGGER.warn("Applications weren't found", ex);
-//            return Collections.emptyList();
-//        }
-//        return rooms;
         String query = "select r from Room r where r.free = true";
         if (roomRequestDto.getHotelType() != HotelType.ANY) {
             query += " and r.hotel.hotelType = '" + roomRequestDto.getHotelType() + "'";
