@@ -1,6 +1,6 @@
 package com.dataart.dao;
 
-import com.dataart.entity.Order;
+import com.dataart.entity.Booking;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -13,38 +13,38 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class OrderDaoImpl implements Dao<Order> {
+public class BookingDaoImpl implements Dao<Booking> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(OrderDaoImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BookingDaoImpl.class);
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public List<Order> findAll() {
-        TypedQuery<Order> typedQuery = entityManager.createNamedQuery("Order.findOrders", Order.class);
-        List<Order> orders;
+    public List<Booking> findAll() {
+        TypedQuery<Booking> typedQuery = entityManager.createNamedQuery("Order.findOrders", Booking.class);
+        List<Booking> bookings;
         try {
-            orders = typedQuery.getResultList();
+            bookings = typedQuery.getResultList();
         } catch(NoResultException ex) {
             LOGGER.warn("Orders weren't found", ex);
             return Collections.emptyList();
         }
-        return orders;
+        return bookings;
     }
 
     @Override
-    public Order find(int id) {
-        return entityManager.find(Order.class, id);
+    public Booking find(int id) {
+        return entityManager.find(Booking.class, id);
     }
 
     @Override
-    public void create(Order order) {
-        entityManager.persist(order);
+    public void create(Booking booking) {
+        entityManager.persist(booking);
     }
 
     @Override
-    public void update(Order order) {
-        entityManager.merge(order);
+    public void update(Booking booking) {
+        entityManager.merge(booking);
     }
 }

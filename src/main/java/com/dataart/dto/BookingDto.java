@@ -4,15 +4,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 
-public class OrderDto {
+public class BookingDto {
 
     private int id;
 
     @NotEmpty
     private String hotelName;
-
-    @NotNull
-    private int hotelId;
 
     @NotNull
     private String number;
@@ -49,14 +46,6 @@ public class OrderDto {
 
     public void setHotelName(String hotelName) {
         this.hotelName = hotelName;
-    }
-
-    public int getHotelId() {
-        return hotelId;
-    }
-
-    public void setHotelId(int hotelId) {
-        this.hotelId = hotelId;
     }
 
     public String getNumber() {
