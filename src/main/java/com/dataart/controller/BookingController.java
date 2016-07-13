@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/rest/v1.0/orders")
 public class BookingController {
@@ -19,7 +21,7 @@ public class BookingController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public BookingDto postOrder(@RequestBody BookingDto bookingDto) {
+    public BookingDto postOrder(@RequestBody @Valid BookingDto bookingDto) {
         return bookingService.order(bookingDto);
     }
 }

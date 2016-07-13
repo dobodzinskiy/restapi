@@ -24,7 +24,12 @@ class Room extends React.Component {
                 <OverlayTrigger trigger="hover" placement="bottom"
                                 overlay={
                                 <Popover title={room.hotelName}>
-                                    <table>
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td>Type</td>
+                                            <td>{room.hotelType}</td>
+                                        </tr>
                                         <tr>
                                             <td>Pool:</td>
                                             <td>{pool}</td>
@@ -37,6 +42,7 @@ class Room extends React.Component {
                                             <td>Tennis courts:</td>
                                             <td>{tennis}</td>
                                         </tr>
+                                        </tbody>
                                     </table>
                                 </Popover>}>
                     <td>{room.hotelName}</td>
@@ -108,7 +114,7 @@ class RoomsPanel extends React.Component {
                                     <div class="form-group">
                                         <label for="rType">Room type:</label>
                                         <select name="rType" class="form-control">
-                                            <option selected value="Any"> -- select an option -- </option>
+                                            <option selected value="Any"> -- select an option --</option>
                                             <option>Single</option>
                                             <option>Double</option>
                                             <option>Twin</option>
@@ -119,7 +125,7 @@ class RoomsPanel extends React.Component {
                                     <div class="form-group">
                                         <label for="rView">Room view:</label>
                                         <select name="rView" class="form-control">
-                                            <option selected value="Any"> -- select an option -- </option>
+                                            <option selected value="Any"> -- select an option --</option>
                                             <option>Garbage</option>
                                             <option>Pool</option>
                                             <option>Sea</option>
@@ -130,7 +136,7 @@ class RoomsPanel extends React.Component {
                                     <div class="form-group">
                                         <label for="hType">Hotel type:</label>
                                         <select name="hType" class="form-control">
-                                            <option selected value="Any"> -- select an option -- </option>
+                                            <option selected value="Any"> -- select an option --</option>
                                             <option>Check in</option>
                                             <option>Daily</option>
                                         </select>
@@ -156,7 +162,7 @@ class RoomsPanel extends React.Component {
                         <tbody>
                         {rooms.map((room) => {
                             return (
-                                <Room room={room} key={room.id} />
+                                <Room room={room} key={room.id}/>
                             )
                         })}
                         </tbody>
