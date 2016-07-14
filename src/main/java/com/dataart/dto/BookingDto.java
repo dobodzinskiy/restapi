@@ -8,28 +8,26 @@ public class BookingDto {
 
     private int id;
 
-    @NotEmpty
     private String hotelName;
 
-    @NotNull
     private String number;
 
-    @NotNull
+    @NotNull(message = "Room id cannot null!")
     private int roomId;
 
-    @NotEmpty
+    @NotEmpty(message = "Enter your name, please.")
     private String clientName;
 
-    @NotEmpty
+    @NotEmpty(message = "Enter your last name, please.")
     private String clientLastName;
 
-    @NotEmpty
+    @NotEmpty(message = "Enter your phone, please.")
     private String clientPhone;
 
-    @NotEmpty
+    @NotEmpty(message = "Select start date")
     private String start;
 
-    @NotEmpty
+    @NotEmpty(message = "Select end date")
     private String end;
 
     public int getId() {
